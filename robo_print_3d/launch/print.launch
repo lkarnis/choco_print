@@ -1,0 +1,15 @@
+<launch>
+
+    <!-- Ovdje pokrećemo rosserial_python -->
+    <node name="rosserial" pkg="rosserial_python" type="serial_node.py" output="screen">
+        <param name="port" value="/dev/ttyUSB0" />
+        <param name="baud" value="9600" />
+    </node>
+    
+    <!-- Start demo -->
+    <include file="$(find robo_print_3d)/msa_config/launch/demo.launch" />
+
+    <!-- Start main.py -->
+    <node pkg="robo_print_3d" type="main.py" name="motion" output="screen" />
+
+</launch>
